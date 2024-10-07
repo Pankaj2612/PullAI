@@ -1,0 +1,145 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.github-cards {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: -10px; /* Counteract the margins on cards */
+}
+
+.github-card {
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Gray color */
+    margin: 10px; /* 20px / 2 for half spacing */
+    padding: 20px; /* $spacing */
+    color: #555; /* Text color */
+    text-decoration: none;
+    font-size: 13px;
+    flex: 1;
+    min-width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+}
+
+.github-card > h3 {
+    margin-top: 0;
+    color: #4078c0; /* GitHub color */
+    font-size: 15px;
+    display: flex; /* Align items in the header */
+    justify-content: space-between; /* Space between title and toggler */
+    align-items: center; /* Center items vertically */
+}
+
+/* Hover effects */
+.github-card:hover {
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.github-card__meta {
+    margin-right: 20px; /* Spacing */
+}
+
+.github-card__meta > i {
+    font-size: 16px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .github-cards {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .github-card {
+        min-width: 100%; /* Cards take full width */
+    }
+}
+
+/* From Uiverse.io by mobinkakei */ 
+.toggler {
+    width: 72px;
+    height: 36px; /* Height of the toggler */
+    position: relative;
+}
+
+.toggler input {
+    display: none; /* Hide the checkbox */
+}
+
+.toggler label {
+    display: block;
+    position: relative;
+    width: 72px;
+    height: 36px;
+    border: 1px solid #d6d6d6;
+    border-radius: 36px;
+    background: #e4e8e8;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Smooth background transition */
+}
+
+.toggler label::after {
+    display: block;
+    border-radius: 100%;
+    background-color: #d7062a;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%; /* Initial position */
+    width: 26px;
+    height: 26px;
+    transform: translateY(-50%) translateX(-50%);
+    transition: left 0.15s ease-in-out, background-color 0.2s ease-out;
+}
+
+.toggler input:checked + label::after {
+    left: 75%; /* Move to the right when checked */
+    background-color: #50ac5d; /* Change color when checked */
+}
+
+.toggler .path {
+    fill: none;
+    stroke: #fefefe;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+}
+
+.toggler input:checked + label .toggler-off {
+    width: 0;
+    height: 0;
+    opacity: 0; /* Hide the toggler-off when checked */
+}
+
+.toggler .toggler-on, .toggler .toggler-off {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Other styles... */
+
+
+/* From Uiverse.io by McHaXYT */ 
+.button {
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    background-color: #151515;
+    color: #eee;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .button-span {
+    color: #aaa;
+  }
+  

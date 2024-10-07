@@ -1,0 +1,40 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub PR Review System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GitHub Pull Request Review System</h1>
+
+    <p>Click below to connect your GitHub account for automatic pull request reviews.</p>
+
+    <!-- Button to initiate GitHub OAuth -->
+    <a href="{{ url_for('login') }}">
+        <button class="button">Connect GitHub</button>
+    </a>
+
+</body>
+</html>

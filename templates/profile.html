@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>{{ user.name }}'s GitHub Profile</title>
+  </head>
+  <body>
+    <h1>Welcome, {{ user.name }}!</h1>
+    <img src="{{ user.avatar_url }}" alt="Avatar" width="100" height="100" />
+    <p>
+      <strong>GitHub Login:</strong>
+      <a href="{{ user.html_url }}">{{ user.login }}</a>
+    </p>
+    <p><strong>Bio:</strong> {{ user.bio }}</p>
+
+    <h2>Your Repositories</h2>
+    
+    <!-- Form to select repositories for webhook -->
+    <form action="{{ url_for('create_webhooks') }}" method="POST">
+      <button type="submit" class="button">Create Webhooks</button>
+    <br>
+      <div class="github-cards">
+        {% for repo in user.repos %}
+        <a
+          href="https://github.com/{{ repo.full_name }}"
+          class="github-card"
+          data-github="{{ repo.full_name }}">
+          <h3>
+            {{ repo.name }}
+            <div class="toggler">
+              <input
+                id="toggler-{{ loop.index }}"
+                name="selected_repos"
+                type="checkbox"
+                value="{{repo.name}}" />
+              <label for="toggler-{{ loop.index }}">
+                <svg
+                  class="toggler-on"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 130.2 130.2"></svg>
+                <svg
+                  class="toggler-off"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 130.2 130.2"></svg>
+              </label>
+            </div>
+          </h3>
+          <p>{{ repo.description }}</p>
+          <span class="github-card__meta">
+            <span class="github-card__language-icon" style="color: #7a0410"
+              >●</span
+            >
+            {{ repo.language }}
+          </span>
+          <span class="github-card__meta">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span data-stars>
+              <i class="fa fa-spinner" aria-hidden="true"></i> {{ repo.stars }}
+            </span>
+          </span>
+          <span class="github-card__meta">
+            <i class="fa fa-code-fork" aria-hidden="true"></i>
+            <span data-forks>
+              <i class="fa fa-spinner" aria-hidden="true"></i> {{ repo.forks }}
+            </span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+      
+    </form>
+    <!-- <form action="{{ url_for('create_webhooks') }}" method="POST">
+        <ul>
+            {% for repo in user.repos %}
+            <li>
+                <input type="checkbox" name="selected_repos" value="{{ repo.name }}">
+                {{ repo.name }}
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Create Webhooks</button>
+    </form> -->
+  </body>
+</html>
