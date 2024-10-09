@@ -1,4 +1,4 @@
-# GitHub OAuth PR Review App
+# GitHub Pull Request Review App
 
 This Flask application provides an automatic PR review system using GitHub OAuth, webhooks, and AI-driven code review. The app allows users to log in using GitHub, create webhooks for their repositories, and automatically generate feedback on pull requests using Google's generative AI.
 
